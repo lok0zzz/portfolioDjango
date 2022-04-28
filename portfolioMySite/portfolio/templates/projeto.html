@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+
+<h1 class="ui header">{{ projeto }}
+
+</h1>
+
+<div class="ui grid">
+    <div class="sixteen wide column">
+        <div class="ui image">
+            <img src="{{ projeto.imagem }}">
+        </div>
+    </div>
+
+    <div class="sixteen wide column">
+        <h2 class="ui header">Linguagem</h2>
+        <p> {{ projeto.linguagem }}</p>
+        <h2 class="ui header">Descrição</h2>
+        {% if projeto.descricao %}
+        <p>{{ projeto.descricao }}</p>
+        {% else %}
+        <p>Este projeto não possui descrição.</p>
+        {% endif %}
+        <h2 class="ui header">Repositório</h2>
+        {% if projeto.repositorio %}
+        <p>{{ projeto.repositorio }}</p>
+        {% else %}
+        <p>Este projeto não possui repositório.</p>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

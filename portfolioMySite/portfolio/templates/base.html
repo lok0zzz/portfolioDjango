@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>LOKOZ's Portfolio</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.1/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.1/dist/semantic.min.js"></script>
+</head>
+<body>
+
+<div class="ui attached menu">
+    <div class="ui container">
+        <a href="{% url 'home' %}" class="item" style="border-style: none"><img class="ui small image" src="{% static 'portfolio/img/logo.png' %}"></img></a>
+        <div class="right menu">
+            <div class="ui right attached menu">
+                    <a href="https://github.com/lok0zzz" class="item" >
+                        <button class="circular ui icon button" >
+                            <i class="icon github"></i>
+                        </button>
+                    </a>
+                    <a href="https://www.linkedin.com/in/raulsbardela/" class="item">
+                        <button class="circular ui icon button">
+                            <i class="icon linkedin"></i>
+                        </button>
+                    </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui container">
+    <div class="ui stackable grid">
+        <div class="four wide column">
+            <div class="ui vertical fluid menu">
+                {% for linguagem in linguagens %}
+                <a href="{% url 'linguagem' linguagem.id %}" class="item">
+                    {{ linguagem }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="twelve wide column">
+            {% block conteudo %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

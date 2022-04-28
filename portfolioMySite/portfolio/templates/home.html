@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+
+<div class="ui three column stackable grid">
+    {% for projeto in projetos %}
+    <div class="column">
+        <div class="ui fluid card">
+            <div class="image">
+                <img src="{{ projeto.imagem }}">
+            </div>
+            <div class="content">
+                <a href="{% url 'projeto' projeto.id %}" class="header">{{ projeto }}</a>
+            </div>
+            <div class="extra content">
+                {{ projeto.descricao|truncatechars:100 }}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+        <p>Nenhum projeto ainda!</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
